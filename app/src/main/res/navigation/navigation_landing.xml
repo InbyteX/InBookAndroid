@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_landing"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.inbyte.inbook.view.ui.welcome.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.inbyte.inbook.view.ui.authentication.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"/>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.inbyte.inbook.view.ui.authentication.register.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_userRegisterFragment"
+            app:destination="@id/userRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userRegisterFragment"
+        android:name="com.inbyte.inbook.view.ui.authentication.userregister.UserRegisterFragment"
+        android:label="UserRegisterFragment"
+        tools:layout="@layout/fragment_user_register">
+        <argument
+            android:name="companyDetails"
+            app:argType="com.inbyte.inbook.data.model.auth.request.CompanyModel"
+            />
+    </fragment>
+</navigation>
