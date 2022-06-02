@@ -2,6 +2,7 @@ package com.inbyte.inbook.view.ui.base
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -22,6 +23,7 @@ abstract class BaseActivity<B : ViewDataBinding, out VM : BaseViewModel> : AppCo
     private lateinit var baseBinding: DialogLoaderBinding
     protected abstract val viewModel: VM
     private var isNetwork = true
+
 
     override fun setContentView(layoutResID: Int) {
         baseBinding = DataBindingUtil.inflate(layoutInflater, R.layout.dialog_loader, null, false)
@@ -104,13 +106,16 @@ abstract class BaseActivity<B : ViewDataBinding, out VM : BaseViewModel> : AppCo
         dialog.show()
     }
 
-    abstract fun observeViewModel()
-    protected abstract fun initViewBinding()
+
+    abstract fun init()
+    abstract fun initCtrl()
+    abstract fun observer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initViewBinding()
-        observeViewModel()
+        init()
+        initCtrl()
+        observer()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

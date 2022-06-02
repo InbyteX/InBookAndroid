@@ -14,13 +14,13 @@ object EnvironmentConfig {
 
       init {
          if (BuildConfig.DEBUG) {
-             environment = Environment.DEV
+             environment = Environment.QA
          }
      }
 
     fun getInBookURl(): String =
         when (environment) {
-            Environment.QA -> ""
+            Environment.QA -> "http://inbyte-env.eba-f82tamcy.ap-south-1.elasticbeanstalk.com/api/"
             Environment.DEV -> "http://192.168.29.7:8080/api/"
             Environment.PROD -> ""
         }

@@ -3,6 +3,7 @@ package com.inbyte.inbook.view.ui.welcome
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.inbyte.inbook.R
 import com.inbyte.inbook.databinding.FragmentWelcomeBinding
@@ -36,6 +37,13 @@ class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(), View.OnClickList
                 findNavController().navigate(R.id.action_welcomeFragment_to_registerFragment)
             }
         }
+    }
+
+    companion object {
+        fun newInstance(): Fragment {
+            return WelcomeFragment()
+        }
+
     }
 
 }
